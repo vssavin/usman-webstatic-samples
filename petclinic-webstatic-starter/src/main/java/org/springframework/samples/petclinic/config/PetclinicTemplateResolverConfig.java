@@ -9,7 +9,7 @@ import org.thymeleaf.spring6.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 
 /**
- * Configuration of user management template resolvers.
+ * Configuration of petclinic template and view resolvers.
  *
  * @author vssavin on 05.01.2024.
  */
