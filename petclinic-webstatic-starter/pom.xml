@@ -42,7 +42,7 @@
     <dependency>
       <groupId>com.github.vssavin.usman-webstatic-starter</groupId>
       <artifactId>usman-webstatic-starter-spring6</artifactId>
-      <version>0.0.1</version>
+      <version>0.0.2</version>
     </dependency>
     <!-- spring security test dependency for tests -->
     <dependency>
