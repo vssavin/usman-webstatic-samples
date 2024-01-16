@@ -13,8 +13,8 @@ services:
       - MYSQL_DATABASE=petclinic
     volumes:
       - "./conf.d:/etc/mysql/conf.d:ro"
-    profiles:
-    - mysql
+#    profiles:
+#    - mysql
   postgres:
     image: postgres:15.3
     ports:
@@ -23,5 +23,20 @@ services:
       - POSTGRES_PASSWORD=petclinic
       - POSTGRES_USER=petclinic
       - POSTGRES_DB=petclinic
-    profiles:
-    - postgres
+#    profiles:
+#    - postgres
+
+  app-mysql:
+    image: maven:3.8.5-openjdk-17
+    depends_on:
+      - mysql
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: on-failure
+    ports:
+      - "8085:8085"
+    volumes:
+      - .m2:/root/.m2
+    stdin_open: true
+    tty: true
