@@ -19,13 +19,13 @@ public class PetclinicDataSourcesConfig {
 
 	private DataSource appDataSource;
 
-	@Value("${spring.datasource.url}")
+	@Value("${spring.datasource.url:}")
 	private String dbUrl;
 
-	@Value("${spring.datasource.username}")
+	@Value("${spring.datasource.username:}")
 	private String dbUserName;
 
-	@Value("${spring.datasource.password}")
+	@Value("${spring.datasource.password:}")
 	private String dbPassword;
 
 	@Bean
