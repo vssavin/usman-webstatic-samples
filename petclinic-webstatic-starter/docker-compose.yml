@@ -1,4 +1,4 @@
-version: "2.2"
+version: "3.8"
 
 services:
   mysql:
@@ -14,7 +14,8 @@ services:
     volumes:
       - "./conf.d:/etc/mysql/conf.d:ro"
     profiles:
-    - mysql
+      - mysql
+
   postgres:
     image: postgres:15.3
     ports:
@@ -24,4 +25,30 @@ services:
       - POSTGRES_USER=petclinic
       - POSTGRES_DB=petclinic
     profiles:
-    - postgres
+      - postgres
+
+  app-mysql:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql
+    restart: on-failure
+    environment:
+      ACTIVE_PROFILE: mysql
+    network_mode: host
+    profiles:
+      - mysql
+
+  app-postgres:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+    restart: on-failure
+    environment:
+      ACTIVE_PROFILE: postgres
+    network_mode: host
+    profiles:
+      - postgres
