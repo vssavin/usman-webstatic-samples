@@ -35,6 +35,8 @@
 
     <spring.security.version>6.2.0</spring.security.version>
 
+    <project-output.dir>${project.name}-app</project-output.dir>
+
   </properties>
 
   <dependencies>
@@ -288,6 +290,64 @@
           <failOnNoGitDirectory>false</failOnNoGitDirectory>
           <failOnUnableToExtractRepoInfo>false</failOnUnableToExtractRepoInfo>
         </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <classpathPrefix>lib/</classpathPrefix>
+              <mainClass>org.springframework.samples.petclinic.PetClinicApplication</mainClass>
+              <packageName>org.springframework.samples.petclinic</packageName>
+            </manifest>
+            <manifestEntries>
+              <mode>development</mode>
+              <url>${project.url}</url>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-dep</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project-output.dir}/lib</outputDirectory>
+              <includeScope>compile</includeScope>
+              <includeScope>test</includeScope>
+            </configuration>
+          </execution>
+          <execution>
+            <id>copy-target</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <overWriteIfNewer>true</overWriteIfNewer>
+              <overWriteSnapshots>true</overWriteSnapshots>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>${project.groupId}</groupId>
+                  <artifactId>${project.artifactId}</artifactId>
+                  <version>${project.version}</version>
+                  <type>${project.packaging}</type>
+                </artifactItem>
+              </artifactItems>
+              <outputDirectory>${project-output.dir}</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
 
     </plugins>
