@@ -40,6 +40,12 @@
   </properties>
 
   <dependencies>
+    <!-- spring kafka dependency -->
+    <dependency>
+      <groupId>org.springframework.kafka</groupId>
+      <artifactId>spring-kafka</artifactId>
+      <version>3.0.10</version>
+    </dependency>
     <!-- usman dependencies -->
     <dependency>
       <groupId>com.github.vssavin.usman-webstatic-starter</groupId>
