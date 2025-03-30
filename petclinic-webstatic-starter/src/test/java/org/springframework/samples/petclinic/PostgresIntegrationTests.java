@@ -48,7 +48,7 @@ import org.springframework.web.client.RestTemplate;
 import org.testcontainers.DockerClientFactory;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, properties = { "spring.docker.compose.skip.in-tests=false", //
-		"spring.docker.compose.profiles.active=postgres" })
+		"spring.docker.compose.profiles.active=postgres", "spring.docker.compose.file=./test-compose.yml" })
 @ActiveProfiles("postgres")
 @DisabledInNativeImage
 public class PostgresIntegrationTests {
@@ -71,7 +71,7 @@ public class PostgresIntegrationTests {
 		new SpringApplicationBuilder(PetClinicApplication.class) //
 			.profiles("postgres") //
 			.properties( //
-					"spring.docker.compose.profiles.active=postgres" //
+					"spring.docker.compose.profiles.active=postgres", "spring.docker.compose.file=./test-compose.yml" //
 			) //
 			.listeners(new PropertiesLogger()) //
 			.run(args);

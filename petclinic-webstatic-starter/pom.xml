@@ -3,12 +3,12 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.springframework.samples</groupId>
   <artifactId>spring-petclinic</artifactId>
-  <version>3.1.0-SNAPSHOT</version>
+  <version>3.4.4-SNAPSHOT</version>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.2.0</version>
+    <version>3.4.4</version>
   </parent>
   <name>petclinic</name>
 
@@ -22,7 +22,7 @@
     <project.build.outputTimestamp>2023-05-10T07:42:50Z</project.build.outputTimestamp>
 
     <!-- Web dependencies -->
-    <webjars-bootstrap.version>5.2.3</webjars-bootstrap.version>
+    <webjars-bootstrap.version>5.3.3</webjars-bootstrap.version>
     <webjars-font-awesome.version>4.7.0</webjars-font-awesome.version>
 
     <checkstyle.version>10.11.0</checkstyle.version>
@@ -33,7 +33,7 @@
     <nohttp-checkstyle.version>0.0.11</nohttp-checkstyle.version>
     <spring-format.version>0.0.39</spring-format.version>
 
-    <spring.security.version>6.2.0</spring.security.version>
+    <spring.security.version>6.4.4</spring.security.version>
 
     <project-output.dir>${project.name}-app</project-output.dir>
 
@@ -44,7 +44,13 @@
     <dependency>
       <groupId>com.github.vssavin.usman-webstatic-starter</groupId>
       <artifactId>usman-webstatic-starter-spring6</artifactId>
-      <version>0.0.3</version>
+      <version>0.0.5</version>
+      <exclusions>
+        <exclusion>
+          <groupId>net.bytebuddy</groupId>
+          <artifactId>byte-buddy-dep</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <!-- spring security test dependency for tests -->
     <dependency>
