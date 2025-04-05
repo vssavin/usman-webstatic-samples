@@ -44,7 +44,7 @@
     <dependency>
       <groupId>com.github.vssavin.usman-webstatic-starter</groupId>
       <artifactId>usman-webstatic-starter-spring6</artifactId>
-      <version>0.0.5</version>
+      <version>0.1.0</version>
       <exclusions>
         <exclusion>
           <groupId>net.bytebuddy</groupId>
